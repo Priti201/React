@@ -4,6 +4,7 @@ import CommonLayout from './CommonLayout'
 import Greetings from './Greetings'
 import Details from './Details'
 import Name from './Name'
+import NoMatchFound from './NoMatchFound'
 // import FareWell from './FareWell'
 
 const Users = () => {
@@ -27,11 +28,14 @@ const Users = () => {
 return(
     <Routes>
         <Route element={<CommonLayout/>}>
+        <Route index element={<Greetings/>}/>
         <Route path='/' element={<Greetings/>}/>
         <Route path='/home' element={<Greetings/>}/>
         <Route path='details' element={<Details user={user}/>}>
           <Route path=':userId' element={<Name/>}/>
+          <Route path='*' element={<NoMatchFound/>}/>
           </Route>
+        <Route path='*' element={<NoMatchFound/>}/>
         </Route>
     </Routes>
 )
